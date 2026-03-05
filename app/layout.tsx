@@ -17,9 +17,12 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Outdoors — Your AI, unboxed",
+  title: "touch grass",
   description:
     "Pepper intelligence running quietly on your desktop. No browser. No tabs. Just a conversation.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
