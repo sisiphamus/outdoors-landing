@@ -1,0 +1,7 @@
+name = "freedom-landing"
+compatibility_date = "2024-12-01"
+pages_build_output_dir = "out"
+
+[[kv_namespaces]]
+binding = "WAITLIST_EMAILS"
+id = "acdb25aa749d41359f6ca6793d55e547"
