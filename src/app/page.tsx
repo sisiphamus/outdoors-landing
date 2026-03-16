@@ -1,42 +1,27 @@
-import Logo from "@/components/Logo";
-import HamburgerMenu from "@/components/HamburgerMenu";
-import Carousel from "@/components/Carousel";
-import Waitlist from "@/components/Waitlist";
-import Footer from "@/components/Footer";
+import LaptopMockup from "@/components/LaptopMockup";
+import WaitlistSection from "@/components/WaitlistSection";
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col">
-      {/* Navigation */}
-      <nav className="w-full flex items-center justify-between px-6 sm:px-12 lg:px-20 py-6">
-        <Logo />
-        <HamburgerMenu />
-      </nav>
-
-      {/* Hero — two column: text left, waitlist right */}
-      <section className="px-6 sm:px-12 lg:px-20 pt-12 sm:pt-20 pb-8 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-16">
-        <div className="sm:ml-12 lg:ml-24 lg:flex-1">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl text-earth-deep tracking-wide leading-tight max-w-3xl">
-            Get Outdoors
-          </h1>
-          <p className="mt-4 text-base sm:text-lg text-earth-brown/70 leading-relaxed max-w-xl">
-            An agent that handles everything, so you can go do anything.
-            Emails, scheduling, research, code, busywork. Outdoors takes it
-            off your plate and gives you your life back.
-          </p>
-        </div>
-        <div className="lg:flex-shrink-0 lg:w-[340px] lg:pt-2">
-          <Waitlist />
-        </div>
-      </section>
-
-      {/* Polaroid carousel */}
-      <Carousel />
-
-      {/* Footer */}
-      <div className="mt-auto">
-        <Footer />
+      {/* Hero section */}
+      <div className="text-center px-6 pt-12 sm:pt-20 md:pt-24 pb-8 sm:pb-12">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-earth-dark mb-6 sm:mb-8">
+          You'll have so much more
+          <span className="block text-earth-brown">free time</span>
+        </h1>
+        <p className="text-lg sm:text-xl md:text-2xl text-earth-dark/70 leading-relaxed max-w-2xl mx-auto">
+          Stop doing busy work. Let technology handle the routine stuff while you focus on what actually matters.
+        </p>
       </div>
+
+      {/* Product demo */}
+      <div className="flex justify-center px-4 sm:px-6 pb-8 sm:pb-16">
+        <LaptopMockup />
+      </div>
+
+      {/* Waitlist section */}
+      <WaitlistSection />
     </main>
   );
 }

@@ -57,9 +57,10 @@ export default function Carousel() {
 
     const measureHalf = () => {
       const children = track.children;
+      const gap = parseFloat(getComputedStyle(track).gap) || 16;
       let w = 0;
       for (let i = 0; i < slides.length; i++) {
-        w += (children[i] as HTMLElement).offsetWidth + 28;
+        w += (children[i] as HTMLElement).offsetWidth + gap;
       }
       return w;
     };
@@ -101,11 +102,10 @@ export default function Carousel() {
   }, []);
 
   return (
-    <section className="w-full overflow-hidden py-4">
+    <section className="w-full overflow-hidden py-2 sm:py-4">
       <div
         ref={trackRef}
-        className="flex will-change-transform"
-        style={{ gap: 28 }}
+        className="flex will-change-transform gap-3 sm:gap-5 md:gap-7"
       >
         {loopedSlides.map((slide, i) => (
           <PolaroidCard
@@ -154,15 +154,14 @@ function PolaroidCard({
 
   return (
     <div
-      className="shrink-0 polaroid-shadow select-none relative"
+      className="shrink-0 polaroid-shadow select-none relative w-[120px] sm:w-[190px] md:w-[230px]"
       style={{
-        width: 260,
         transform: `rotate(${rotation}deg)`,
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="bg-white p-3 pb-12 relative overflow-hidden" style={{ borderRadius: 2 }}>
+      <div className="bg-white p-2 sm:p-3 relative overflow-hidden" style={{ borderRadius: 2 }}>
         {/* Glow overlay on the polaroid frame (outside the image) */}
         <div
           className="absolute inset-0 pointer-events-none z-10"
@@ -181,7 +180,7 @@ function PolaroidCard({
             maskImage: "linear-gradient(#fff 0 0), linear-gradient(#fff 0 0)",
             maskSize: "100% 100%, 100% 100%",
             maskComposite: "exclude",
-            padding: "12px 12px 48px 12px",
+            padding: "12px",
             WebkitMaskOrigin: "content-box, border-box",
             maskOrigin: "content-box, border-box",
           }}
@@ -230,7 +229,7 @@ function PolaroidCard({
           )}
         </div>
 
-        <p className="absolute bottom-3 left-3 right-3 text-center text-xs tracking-[0.1em] text-earth-brown/70 italic">
+        <p className="mt-2 sm:mt-3 px-0.5 text-center text-[9px] sm:text-[11px] tracking-[0.08em] text-earth-brown/70 italic leading-snug min-h-[24px] sm:min-h-[32px]">
           {slide.caption}
         </p>
       </div>
