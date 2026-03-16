@@ -1,117 +1,179 @@
 export default function Home() {
   return (
-    <main className="overflow-x-hidden">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="hero min-h-screen flex items-center justify-center text-center relative">
-        {/* Floating elements - hidden on mobile */}
-        <div className="floating-element hidden md:block absolute top-[15%] left-[10%] animate-float">
-          MCAT prep for 3 months
-        </div>
-        <div className="floating-element hidden md:block absolute top-[25%] right-[8%] animate-float" style={{animationDelay: '2s'}}>
-          Research lab applications
-        </div>
-        <div className="floating-element hidden md:block absolute bottom-[30%] left-[5%] animate-float" style={{animationDelay: '4s'}}>
-          Clinical volunteer scheduling
-        </div>
-        <div className="floating-element hidden md:block absolute bottom-[20%] right-[10%] animate-float" style={{animationDelay: '1s'}}>
-          Med school essays
-        </div>
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-earth-cream via-earth-cream to-earth-sand/30">
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(139,115,85,0.03)_50%,transparent_75%)] bg-[length:60px_60px]"></div>
 
-        <div className="hero-content container max-w-6xl mx-auto px-4 z-10">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-earth-forest mb-4 sm:mb-6 md:mb-8 leading-tight">
-            Do more with your life
-          </h1>
-          <p className="tagline text-xl sm:text-2xl md:text-3xl text-earth-brown italic max-w-2xl mx-auto mb-6 sm:mb-8">
-            Stop drowning in busy work.<br />Start living your potential.
-          </p>
-          <p className="subtitle text-base sm:text-lg md:text-xl text-earth-dark/80 max-w-lg mx-auto mb-8 sm:mb-12">
-            An AI assistant that handles the tedious stuff so you can focus on what actually matters for your future.
-          </p>
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-earth-brown/10 rounded-full text-sm font-medium text-earth-brown border border-earth-brown/20">
+              <div className="w-2 h-2 bg-earth-brown rounded-full"></div>
+              For ambitious pre-med students
+            </div>
+
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-earth-forest leading-tight tracking-tight">
+              Do more with
+              <span className="block text-earth-brown italic">your life</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-earth-dark/70 max-w-2xl mx-auto leading-relaxed">
+              Stop drowning in admin work. Start living your potential.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+              <button className="px-8 py-4 bg-earth-forest text-earth-cream rounded-xl font-semibold hover:bg-earth-forest/90 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Download Outdoors
+              </button>
+              <div className="text-sm text-earth-brown/60">Free • No account required</div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Problem Section */}
-      <section className="problem py-12 sm:py-16 md:py-24 bg-earth-sand">
-        <div className="container max-w-6xl mx-auto px-4">
-          <div className="section-header text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-earth-forest mb-4 sm:mb-6">
-              You're too smart for this
+      {/* Stats Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-earth-forest mb-4">
+              Pre-med is consuming your life
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-earth-brown max-w-2xl mx-auto">
-              Pre-med shouldn't mean sacrificing everything else you care about
+            <p className="text-xl text-earth-brown max-w-2xl mx-auto">
+              You're too smart to be doing this much busy work
             </p>
           </div>
 
-          <div className="problem-grid grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
-            <div className="problem-card bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-earth-brown/15">
-              <h3 className="text-xl sm:text-2xl font-bold text-earth-forest mb-4">
-                Endless admin work
-              </h3>
-              <p className="text-earth-brown text-base sm:text-lg">
-                Application deadlines, scheduling volunteer hours, organizing research notes. Your brain is meant for bigger things.
-              </p>
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="border-l-4 border-earth-brown/30 pl-6">
+                <div className="text-3xl font-bold text-earth-forest mb-2">15+ hours/week</div>
+                <p className="text-earth-brown">Spent on applications, scheduling, and admin tasks</p>
+              </div>
+
+              <div className="border-l-4 border-earth-brown/30 pl-6">
+                <div className="text-3xl font-bold text-earth-forest mb-2">3 years</div>
+                <p className="text-earth-brown">Of your life dedicated to pre-med requirements</p>
+              </div>
+
+              <div className="border-l-4 border-earth-brown/30 pl-6">
+                <div className="text-3xl font-bold text-earth-forest mb-2">0 time</div>
+                <p className="text-earth-brown">Left for relationships, hobbies, or spontaneous adventure</p>
+              </div>
             </div>
 
-            <div className="problem-card bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-earth-brown/15">
-              <h3 className="text-xl sm:text-2xl font-bold text-earth-forest mb-4">
-                No time for relationships
-              </h3>
-              <p className="text-earth-brown text-base sm:text-lg">
-                When did you last have a real conversation that wasn't about grades or requirements?
-              </p>
-            </div>
-
-            <div className="problem-card bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-earth-brown/15">
-              <h3 className="text-xl sm:text-2xl font-bold text-earth-forest mb-4">
-                Missing life experiences
-              </h3>
-              <p className="text-earth-brown text-base sm:text-lg">
-                Travel, hobbies, spontaneous adventures. You're building a resume but losing yourself.
-              </p>
+            <div className="bg-earth-sand/40 rounded-2xl p-8 space-y-4">
+              <h3 className="text-xl font-semibold text-earth-forest mb-6">What you're missing:</h3>
+              <div className="space-y-3 text-earth-brown">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-earth-brown rounded-full"></div>
+                  <span>Deep conversations with friends</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-earth-brown rounded-full"></div>
+                  <span>Learning something just for fun</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-earth-brown rounded-full"></div>
+                  <span>Traveling somewhere new</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-earth-brown rounded-full"></div>
+                  <span>Building something creative</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-earth-brown rounded-full"></div>
+                  <span>Actually enjoying your twenties</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Demo Section */}
-      <section className="demo py-16 sm:py-20 md:py-32 text-center">
-        <div className="container max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-earth-forest mb-8 sm:mb-12">
-            Your personal productivity assistant
-          </h2>
+      {/* Solution Section */}
+      <section className="py-24 bg-earth-sand/20">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-earth-forest mb-6">
+              Get your time back
+            </h2>
+            <p className="text-xl text-earth-brown max-w-2xl mx-auto">
+              Outdoors handles the tedious stuff automatically
+            </p>
+          </div>
 
-          <div className="laptop-container max-w-4xl mx-auto">
-            <div className="laptop-mockup border-8 sm:border-16 md:border-20 border-[#d4d0c8] bg-[#c0c0c0] rounded-xl shadow-2xl overflow-hidden aspect-video">
-              <div className="laptop-screen w-full h-full bg-gradient-to-br from-sky-300 to-green-300 flex items-center justify-center">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold tracking-wider drop-shadow-lg">
-                  Outdoors
-                </h3>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-earth-brown/10">
+              <div className="p-2 bg-earth-sand/50">
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                  </div>
+                  <div className="text-sm text-earth-brown/60 ml-4">Outdoors</div>
+                </div>
+              </div>
+              <div className="p-8 md:p-12">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-earth-forest rounded-full flex items-center justify-center text-white text-sm font-bold">✓</div>
+                    <div>
+                      <div className="font-semibold text-earth-forest">MCAT scheduling optimized</div>
+                      <div className="text-earth-brown/70 text-sm">Found 4 hours this week for focused study</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-earth-forest rounded-full flex items-center justify-center text-white text-sm font-bold">✓</div>
+                    <div>
+                      <div className="font-semibold text-earth-forest">Research applications submitted</div>
+                      <div className="text-earth-brown/70 text-sm">3 labs, personalized outreach, follow-up scheduled</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-earth-forest rounded-full flex items-center justify-center text-white text-sm font-bold">✓</div>
+                    <div>
+                      <div className="font-semibold text-earth-forest">Volunteer hours organized</div>
+                      <div className="text-earth-brown/70 text-sm">Clinical coordinator notified, schedule conflicts resolved</div>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-earth-brown/10">
+                    <div className="text-earth-forest font-semibold">
+                      Result: 12 hours returned to your week
+                    </div>
+                    <div className="text-earth-brown/70 text-sm">
+                      Time to call your parents, read for pleasure, or plan that trip
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
-          <p className="mt-8 text-earth-brown italic text-lg sm:text-xl">
-            Automate scheduling, organize applications, track deadlines.<br />
-            Get back hours every week.
-          </p>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="cta bg-earth-forest text-earth-cream py-12 sm:py-16 md:py-20 text-center">
-        <div className="container max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-            Ready to get your life back?
+      <section className="py-24 bg-earth-forest text-earth-cream">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            Ready to reclaim your time?
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 opacity-90 max-w-2xl mx-auto">
-            Download Outdoors and start focusing on what actually matters for your future.
+          <p className="text-xl mb-12 opacity-90">
+            Download Outdoors and start focusing on what actually matters.
           </p>
-          <a
-            href="#"
-            className="download-btn inline-block bg-accent-warm text-earth-dark px-8 sm:px-12 py-4 sm:py-5 rounded-full font-semibold text-lg sm:text-xl tracking-wide transition-all duration-300 hover:bg-earth-cream hover:-translate-y-1 hover:shadow-xl"
-          >
-            Download Now
-          </a>
+
+          <div className="space-y-6">
+            <button className="px-12 py-4 bg-accent-warm text-earth-dark rounded-xl font-bold text-lg hover:bg-earth-cream transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+              Download for Free
+            </button>
+
+            <div className="text-earth-cream/70 text-sm">
+              No account required • Works offline • Privacy focused
+            </div>
+          </div>
         </div>
       </section>
     </main>
