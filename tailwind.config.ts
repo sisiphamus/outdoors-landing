@@ -17,6 +17,9 @@ const config: Config = {
           moss: "#5E6B52",
           clay: "#B47B56",
         },
+        accent: {
+          warm: "#D4A574",
+        },
       },
       fontFamily: {
         lora: ["var(--font-lora)", "Georgia", "serif"],
