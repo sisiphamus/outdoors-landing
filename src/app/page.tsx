@@ -6,10 +6,6 @@ export default function Home() {
     <main className="min-h-screen flex flex-col">
       {/* Hero section */}
       <div className="text-center px-6 pt-12 sm:pt-20 md:pt-24 pb-8 sm:pb-12">
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-earth-dark mb-6 sm:mb-8">
-          You'll have so much more
-          <span className="block text-earth-brown">free time</span>
-        </h1>
         <p className="text-lg sm:text-xl md:text-2xl text-earth-dark/70 leading-relaxed max-w-2xl mx-auto">
           Stop doing busy work. Let technology handle the routine stuff while you focus on what actually matters.
         </p>
