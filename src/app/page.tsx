@@ -47,11 +47,11 @@ h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
 h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); }
 p { font-size: 1.06rem; color: var(--text-secondary); transition: color var(--transition-mode); }
 .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-section { padding: 96px 0; transition: background var(--transition-mode); }
+section { padding: 72px 0; transition: background var(--transition-mode); }
 .section-alt { background: var(--section-alt-bg); }
 .section-label { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; transition: color var(--transition-mode); }
 .section-heading { margin-bottom: 20px; transition: color var(--transition-mode); }
-.section-sub { max-width: 560px; margin-bottom: 48px; font-size: 1.12rem; line-height: 1.7; }
+.section-sub { max-width: 560px; margin-bottom: 32px; font-size: 1.12rem; line-height: 1.7; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: all var(--transition-fast); }
 .btn-primary { background: var(--cta-bg); color: var(--cta-text); }
 .btn-primary:hover { background: var(--cta-hover); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
@@ -68,7 +68,7 @@ nav.scrolled::after { opacity: 0.3; }
 .mode-toggle button { padding: 8px 20px; border: none; border-radius: var(--radius-pill); font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 300ms ease; color: var(--pill-inactive-text); background: transparent; }
 .mode-toggle button.active { background: var(--pill-active-bg); color: var(--pill-active-text); }
 .nav-cta { font-size: 0.88rem; padding: 10px 24px; }
-.hero { min-height: 100vh; display: flex; align-items: center; padding-top: var(--nav-h); background: var(--hero-gradient); transition: background var(--transition-mode); }
+.hero { display: flex; align-items: center; padding-top: calc(var(--nav-h) + 64px); padding-bottom: 64px; background: var(--hero-gradient); transition: background var(--transition-mode); }
 .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .hero-text { max-width: 540px; }
 .hero-overline { font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; transition: color var(--transition-mode); }
@@ -94,12 +94,8 @@ nav.scrolled::after { opacity: 0.3; }
 .voice-waves { display: flex; gap: 2px; align-items: center; }
 .voice-wave { width: 3px; border-radius: 2px; background: #8696A0; }
 .chat-time { font-size: 0.65rem; color: rgba(233,237,239,0.5); text-align: right; margin-top: 2px; }
-.enterprise-visual { display: none; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.06); transition: all var(--transition-mode); }
-[data-mode="enterprise"] .enterprise-visual { display: block; }
-[data-mode="enterprise"] .phone-mockup { display: none; }
-[data-mode="personal"] .enterprise-visual { display: none; }
-[data-mode="personal"] .phone-mockup { display: block; }
-[data-mode="enterprise"] .enterprise-visual:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.1); border-color: var(--border-hover); }
+.enterprise-visual { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.06); transition: all var(--transition-mode); }
+.enterprise-visual:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.1); border-color: var(--border-hover); }
 .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
 .dashboard-title { font-family: var(--font-sans); font-weight: 700; font-size: 1rem; color: var(--text-primary); }
 .dashboard-badge { font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: var(--radius-pill); background: var(--accent-subtle); color: var(--accent); }
@@ -127,14 +123,13 @@ nav.scrolled::after { opacity: 0.3; }
 .feature-visual { height: 200px; border-radius: var(--radius-md); background: var(--bg-surface); overflow: hidden; transition: background var(--transition-mode); }
 .feature-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
 .security-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-[data-mode="enterprise"] .security-grid { grid-template-columns: repeat(4, 1fr); }
+.security-grid.four-col { grid-template-columns: repeat(4, 1fr); }
 .security-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; transition: all var(--transition-mode); }
 .security-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-subtle); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: background var(--transition-mode); }
 .security-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: stroke var(--transition-mode); }
 .security-card h3 { font-family: var(--font-sans); font-size: 1rem; font-weight: 700; margin-bottom: 8px; transition: color var(--transition-mode); }
 .security-card p { font-size: 0.9rem; line-height: 1.55; }
-.enterprise-only { display: none; }
-[data-mode="enterprise"] .enterprise-only { display: block; }
+/* enterprise-only handled by React conditional rendering */
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
 .pricing-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px 32px; text-align: center; transition: all var(--transition-mode); position: relative; }
 .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
@@ -147,10 +142,6 @@ nav.scrolled::after { opacity: 0.3; }
 .pricing-features li { padding: 8px 0; font-size: 0.9rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color var(--transition-mode), border-color var(--transition-mode); }
 .pricing-features li:last-child { border-bottom: none; }
 .pricing-card .btn { width: 100%; }
-.pricing-enterprise { display: none; }
-.pricing-personal { display: grid; }
-[data-mode="enterprise"] .pricing-enterprise { display: grid; }
-[data-mode="enterprise"] .pricing-personal { display: none; }
 .pricing-enterprise { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 760px; margin: 0 auto; }
 .final-cta { background: var(--final-cta-bg); text-align: center; transition: background var(--transition-mode); }
 .final-cta h2 { margin-bottom: 16px; }
@@ -160,10 +151,7 @@ nav.scrolled::after { opacity: 0.3; }
 .waitlist-form input::placeholder { color: var(--text-muted); }
 .waitlist-form input:focus { border-color: var(--accent); }
 .final-cta .note { font-size: 0.82rem; color: var(--text-muted); }
-.enterprise-cta-section { display: none; }
-.personal-cta-section { display: block; }
-[data-mode="enterprise"] .enterprise-cta-section { display: block; }
-[data-mode="enterprise"] .personal-cta-section { display: none; }
+/* CTA sections handled by React conditional rendering */
 footer { padding: 40px 0; border-top: 1px solid var(--border); transition: border-color var(--transition-mode); }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; }
 .footer-logo { font-family: var(--font-serif); font-size: 1.1rem; color: var(--text-primary); transition: color var(--transition-mode); }
@@ -171,11 +159,12 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); transition: borde
 .footer-links a { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: color var(--transition-fast); }
 .footer-links a:hover { color: var(--text-primary); }
 .footer-legal { font-size: 0.78rem; color: var(--text-muted); transition: color var(--transition-mode); }
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease, transform 600ms ease; }
+.reveal { opacity: 0.15; transform: translateY(12px); transition: opacity 400ms ease, transform 400ms ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 100ms; }
-.reveal-delay-2 { transition-delay: 200ms; }
-.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-1 { transition-delay: 60ms; }
+.reveal-delay-2 { transition-delay: 120ms; }
+.reveal-delay-3 { transition-delay: 180ms; }
+.hero .reveal { opacity: 1; transform: none; }
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
   .hero-text { max-width: 100%; }
@@ -187,10 +176,10 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); transition: borde
   .features-grid { grid-template-columns: 1fr; }
   .feature-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
   .security-grid { grid-template-columns: repeat(2, 1fr); }
-  [data-mode="enterprise"] .security-grid { grid-template-columns: repeat(2, 1fr); }
+  .security-grid.four-col { grid-template-columns: repeat(2, 1fr); }
   .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
   .pricing-enterprise { grid-template-columns: 1fr; max-width: 400px; }
-  section { padding: 80px 0; }
+  section { padding: 56px 0; }
 }
 @media (max-width: 600px) {
   nav { padding: 0 16px; }
@@ -199,11 +188,11 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); transition: borde
   .container { padding: 0 16px; }
   .steps-grid { grid-template-columns: 1fr; }
   .security-grid { grid-template-columns: 1fr; }
-  [data-mode="enterprise"] .security-grid { grid-template-columns: 1fr; }
+  .security-grid.four-col { grid-template-columns: 1fr; }
   .waitlist-form { flex-direction: column; }
   .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
-  section { padding: 64px 0; }
+  section { padding: 48px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
@@ -227,7 +216,7 @@ export default function Home() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add("visible");
       });
-    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.05, rootMargin: "0px 0px 40px 0px" });
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
     const onScroll = () => {
@@ -349,7 +338,7 @@ export default function Home() {
                 </div>
               )}
               {isEnterprise && (
-                <div className="enterprise-visual" style={{display:"block"}}>
+                <div className="enterprise-visual">
                   <div className="dashboard-header">
                     <div className="dashboard-title">Team Activity</div>
                     <div className="dashboard-badge">3 agents active</div>
@@ -454,7 +443,7 @@ export default function Home() {
           <div className="section-label reveal">Security</div>
           <h2 className="section-heading reveal reveal-delay-1">Your data stays yours.</h2>
           <p className="section-sub reveal reveal-delay-2">Built with privacy as the foundation, not an afterthought.</p>
-          <div className="security-grid">
+          <div className={`security-grid ${isEnterprise ? "four-col" : ""}`}>
             <div className="security-card reveal">
               <div className="security-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
               <h3>Runs locally</h3>
@@ -511,7 +500,7 @@ export default function Home() {
             </div>
           )}
           {isEnterprise && (
-            <div className="pricing-grid pricing-enterprise reveal" style={{display:"grid"}}>
+            <div className="pricing-grid pricing-enterprise reveal">
               <div className="pricing-card recommended">
                 <div className="pricing-badge">Most popular</div>
                 <div className="pricing-tier">Team</div>
