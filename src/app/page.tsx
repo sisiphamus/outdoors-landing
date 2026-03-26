@@ -431,9 +431,8 @@ export default function Home() {
     const email = fd.get("email") as string;
     const company = fd.get("company") as string;
     // Send to our API route (Cloudflare Pages Function)
-    fetch("/api/lead", {
+    fetch("https://script.google.com/macros/s/AKfycbwZZiYmxWfmUbsuJCYdxfEys8HihaCWUsw4r46OJ-DB1psv2kuqGWS2jeLfGpceZGcO/exec", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, company, type: "demo" })
     }).catch(() => {});
     setModalDone(true);
@@ -489,9 +488,8 @@ export default function Home() {
     ev.preventDefault();
     const inp = ev.currentTarget.querySelector("input") as HTMLInputElement;
     const email = inp.value;
-    fetch("/api/lead", {
+    fetch("https://script.google.com/macros/s/AKfycbwZZiYmxWfmUbsuJCYdxfEys8HihaCWUsw4r46OJ-DB1psv2kuqGWS2jeLfGpceZGcO/exec", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, type: "waitlist" })
     }).catch(() => {});
     inp.value = ""; inp.placeholder = "Thanks! We\u2019ll be in touch.";
