@@ -130,7 +130,7 @@ nav.scrolled::after { opacity: 0.3; }
 .security-card h3 { font-family: var(--font-sans); font-size: 1rem; font-weight: 700; margin-bottom: 8px; transition: color var(--transition-mode); }
 .security-card p { font-size: 0.9rem; line-height: 1.55; }
 /* enterprise-only handled by React conditional rendering */
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; max-width: 900px; margin-left: auto; margin-right: auto; }
 .pricing-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px 32px; text-align: center; transition: all var(--transition-mode); position: relative; display: flex; flex-direction: column; }
 .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
 .pricing-card.recommended { border-color: var(--pricing-recommended); box-shadow: 0 0 0 1px var(--pricing-recommended); }
@@ -482,7 +482,7 @@ export default function Home() {
               : "Start free with your own API key, or let us handle everything."}
           </p>
           {!isEnterprise && (
-            <div className="pricing-grid pricing-personal reveal">
+            <div className="pricing-grid pricing-personal">
               {[
                 {tier:"Free",amount:"$0",period:"per month",features:["Bring your own API key","Core agent capabilities","Email and calendar","Community support"],btn:"Get Started",cls:"btn-outline",rec:false},
                 {tier:"Pro",amount:"$30",period:"per month",features:["Everything included, no key needed","All features and integrations","Priority task execution","Email support"],btn:"Join Waitlist",cls:"btn-primary",rec:true},
@@ -500,7 +500,7 @@ export default function Home() {
             </div>
           )}
           {isEnterprise && (
-            <div className="pricing-grid pricing-enterprise reveal">
+            <div className="pricing-grid pricing-enterprise">
               <div className="pricing-card recommended">
                 <div className="pricing-badge">Most popular</div>
                 <div className="pricing-tier">Team</div>
