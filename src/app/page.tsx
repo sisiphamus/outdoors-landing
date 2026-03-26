@@ -430,7 +430,7 @@ export default function Home() {
           <button className={!e ? "on" : ""} onClick={() => setMode("personal")}>Personal</button>
           <button className={e ? "on" : ""} onClick={() => setMode("enterprise")}>Enterprise</button>
         </div>
-        <a href="#cta" className="nav-btn">{e ? "Request Demo" : "Join Waitlist"}</a>
+        <a href={e ? "mailto:at253@rice.edu?subject=Everest%20Demo%20Request" : "#cta"} className="nav-btn">{e ? "Request Demo" : "Join Waitlist"}</a>
       </nav>
 
       <section className="hero">
@@ -440,8 +440,8 @@ export default function Home() {
         </h1>
         <p className="hero-sub">{e ? "Deploy AI agents across your team that handle email, scheduling, and documents through your existing tools." : "A textable AI agent that sends emails, manages your calendar, and drafts polished work from a voice note."}</p>
         <div className="hero-ctas">
-          <a href="#cta" className="btn-primary">{e ? "Request a Demo" : "Join Waitlist"}</a>
-          <a href="#steps" className="btn-text">{e ? "See pricing" : "How it works"}</a>
+          <a href={e ? "mailto:at253@rice.edu?subject=Everest%20Demo%20Request" : "#cta"} className="btn-primary">{e ? "Request a Demo" : "Join Waitlist"}</a>
+          <a href={e ? "#pricing" : "#steps"} className="btn-text">{e ? "See pricing" : "How it works"}</a>
         </div>
         {e && (
           <div className="ent-dash">
@@ -571,7 +571,7 @@ export default function Home() {
             <div className="pc pop">
               <div className="pc-t">Team</div><div className="pc-a">$200</div><div className="pc-p">per seat / month</div>
               <ul className="pc-l"><li>Full agent per employee</li><li>Admin dashboard</li><li>All integrations</li><li>Dedicated onboarding</li><li>Priority support</li></ul>
-              <a href="#cta" className="pc-b">Request Demo</a>
+              <a href="mailto:at253@rice.edu?subject=Everest%20Demo%20Request" className="pc-b">Request Demo</a>
             </div>
             <div className="pc">
               <div className="pc-t">Custom</div><div className="pc-a">Custom</div><div className="pc-p">tailored to you</div>
@@ -591,13 +591,13 @@ export default function Home() {
         </>) : (<>
           <h2 className="rv">Give your team superpowers.</h2>
           <p className="rv">See how Everest saves your team 30+ hours a week.</p>
-          <div className="cta-btns rv"><a href="mailto:adam@outdoors.dev" className="btn-primary">Request a Demo</a><a href="mailto:adam@outdoors.dev" className="btn-text">Contact Sales</a></div>
+          <div className="cta-btns rv"><a href="mailto:at253@rice.edu?subject=Everest%20Demo%20Request" className="btn-primary">Request a Demo</a><a href="mailto:at253@rice.edu?subject=Everest%20Demo%20Request" className="btn-text">Contact Sales</a></div>
         </>)}
       </section>
 
       <footer><div className="fi">
         <span className="logo">{e ? "EVEREST" : "outdoors"}</span>
-        <ul className="fl"><li><a href="#steps">Product</a></li><li><a href="#pricing">Pricing</a></li><li><a href="mailto:adam@outdoors.dev">Contact</a></li></ul>
+        <ul className="fl"><li><a href="#steps">Product</a></li><li><a href="#pricing">Pricing</a></li><li><a href="mailto:at253@rice.edu?subject=Everest%20Demo%20Request">Contact</a></li></ul>
         <span className="fn">Built at Rice University</span>
       </div></footer>
     </>
