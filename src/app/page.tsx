@@ -426,6 +426,20 @@ export default function Home() {
   const openDemo = (ev: React.MouseEvent) => { ev.preventDefault(); setShowModal(true); setModalDone(false); };
   const submitDemo = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
+    const fd = new FormData(ev.currentTarget);
+    const name = fd.get("name") as string;
+    const email = fd.get("email") as string;
+    const company = fd.get("company") as string;
+    // Send notification email via mailto fallback + formsubmit.co
+    fetch("https://formsubmit.co/ajax/at253@rice.edu", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        _subject: "Everest Demo Request: " + (company || name),
+        name, email, company,
+        message: name + " (" + email + ") from " + (company || "N/A") + " requested a demo."
+      })
+    }).catch(() => {});
     setModalDone(true);
     setTimeout(() => { setShowModal(false); setModalDone(false); }, 2500);
   };
@@ -478,6 +492,16 @@ export default function Home() {
   const onSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
     const inp = ev.currentTarget.querySelector("input") as HTMLInputElement;
+    const email = inp.value;
+    fetch("https://formsubmit.co/ajax/at253@rice.edu", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        _subject: "Outdoors Waitlist: " + email,
+        email,
+        message: email + " joined the Outdoors waitlist."
+      })
+    }).catch(() => {});
     inp.value = ""; inp.placeholder = "Thanks! We\u2019ll be in touch.";
     setTimeout(() => { inp.placeholder = "Your email"; }, 3000);
   };
@@ -680,9 +704,9 @@ export default function Home() {
               <h3>Request a demo</h3>
               <p>Leave your email and we{"'"}ll reach out to schedule a walkthrough.</p>
               <form className="modal-form" onSubmit={submitDemo}>
-                <input type="text" placeholder="Your name" required />
-                <input type="email" placeholder="Work email" required />
-                <input type="text" placeholder="Company name" />
+                <input type="text" name="name" placeholder="Your name" required />
+                <input type="email" name="email" placeholder="Work email" required />
+                <input type="text" name="company" placeholder="Company name" />
                 <button type="submit">Submit</button>
               </form>
               <button className="modal-close" onClick={() => setShowModal(false)}>Maybe later</button>
