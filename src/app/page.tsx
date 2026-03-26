@@ -11,18 +11,18 @@ const css = `
 }
 
 [data-mode="personal"] {
-  --bg: #111110;
-  --bg-alt: #161614;
-  --bg-surface: #1c1c19;
-  --text-1: #f0ebe3;
-  --text-2: #9b9489;
-  --text-3: #5c5750;
-  --accent: #c9a84c;
-  --accent-dim: rgba(201,168,76,0.08);
-  --border: rgba(255,255,255,0.06);
-  --nav-bg: rgba(17,17,16,0.9);
-  --cta-bg: #c9a84c;
-  --cta-fg: #111110;
+  --bg: #2b2a24;
+  --bg-alt: #32312a;
+  --bg-surface: #3a3930;
+  --text-1: #f2ede4;
+  --text-2: #b5ad9e;
+  --text-3: #7a7468;
+  --accent: #5a7a5a;
+  --accent-dim: rgba(90,122,90,0.1);
+  --border: rgba(255,255,255,0.08);
+  --nav-bg: rgba(43,42,36,0.92);
+  --cta-bg: #5a7a5a;
+  --cta-fg: #f2ede4;
 }
 
 [data-mode="enterprise"] {
@@ -243,9 +243,33 @@ footer { padding: 32px 24px; border-top: 1px solid var(--border); transition: bo
 .fl a:hover { color: var(--text-1); }
 .fn { font-size: 0.75rem; color: var(--text-3); transition: color 0.5s var(--ease); }
 
-.rv { opacity: 0; transform: translateY(14px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
+.rv { opacity: 0; transform: translateY(14px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
 .rv.show { opacity: 1; transform: none; }
 .hero .rv { opacity: 1; transform: none; }
+
+/* Smooth entrance for phone */
+.phone-wrap { animation: phone-in 1s var(--ease) 0.3s both; }
+@keyframes phone-in { from { opacity: 0; transform: translateY(30px) scale(0.97); } to { opacity: 1; transform: none; } }
+.iphone { transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+.iphone:hover { transform: translateY(-4px); box-shadow: 0 50px 100px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06) inset; }
+
+/* Stagger hero text */
+.hero h1 { animation: fade-up 0.7s var(--ease) both; }
+.hero-sub { animation: fade-up 0.7s var(--ease) 0.1s both; }
+.hero-ctas { animation: fade-up 0.7s var(--ease) 0.2s both; }
+@keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* Steps hover */
+.si { transition: background 0.5s var(--ease), transform 0.25s var(--ease); }
+.si:hover { transform: translateY(-2px); }
+
+/* Feature images */
+.feat-vis { transition: background 0.5s var(--ease), transform 0.4s var(--ease); }
+.feat-vis:hover { transform: scale(1.02); }
+
+/* Trust items */
+.ti { transition: transform 0.25s var(--ease); }
+.ti:hover { transform: translateY(-2px); }
 
 @media (max-width: 860px) {
   .hero h1 { font-size: clamp(2.2rem, 8vw, 3.2rem); }
@@ -294,22 +318,24 @@ export default function Home() {
     document.querySelectorAll(".rv").forEach((el) => obs.observe(el));
     const onScroll = () => document.getElementById("nav")?.classList.toggle("scrolled", window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
-    const msgs = document.getElementById("waChat");
-    if (msgs) {
-      const co = new IntersectionObserver((entries) => {
-        entries.forEach((x) => {
-          if (x.isIntersecting) {
-            msgs.querySelectorAll(".m").forEach((b, i) => {
-              setTimeout(() => { b.classList.add("v"); msgs.scrollTop = msgs.scrollHeight; }, i * 450);
-            });
-            co.disconnect();
-          }
-        });
-      }, { threshold: 0.2 });
-      co.observe(msgs);
-    }
     return () => { obs.disconnect(); window.removeEventListener("scroll", onScroll); };
   }, []);
+
+  // Chat animation — re-runs when mode switches back to personal
+  useEffect(() => {
+    if (e) return;
+    const timer = setTimeout(() => {
+      const msgs = document.getElementById("waChat");
+      if (!msgs) return;
+      const bubbles = msgs.querySelectorAll(".m");
+      // If already animated, skip
+      if (bubbles[0]?.classList.contains("v")) return;
+      bubbles.forEach((b, i) => {
+        setTimeout(() => { b.classList.add("v"); msgs.scrollTop = msgs.scrollHeight; }, i * 450);
+      });
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [e]);
 
   const onSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
@@ -350,15 +376,15 @@ export default function Home() {
               <div className="msg-hdr"><span className="msg-back">&lsaquo;</span><div className="msg-av">O</div><div className="msg-name">Outdoors</div></div>
               <div className="msgs" id="waChat">
                 <div className="mt">Today 9:14 AM</div>
-                <div className="m i">Send an email to the team letting them know I{"'"}ll be 15 min late. Keep it casual.</div>
+                <div className="m o">Send an email to the team letting them know I{"'"}ll be 15 min late. Keep it casual.</div>
                 <div className="md">Delivered</div>
-                <div className="m o">Done. Sent from your Gmail: {"\u201c"}Hey all, running ~15 min behind. Start without me.{"\u201d"}</div>
-                <div className="m i">Check if I have anything after 3pm. If clear, block it for deep work.</div>
+                <div className="m i">Done. Sent from your Gmail: {"\u201c"}Hey all, running ~15 min behind. Start without me.{"\u201d"}</div>
+                <div className="m o">Check if I have anything after 3pm. If clear, block it for deep work.</div>
                 <div className="mt">Read 9:14 AM</div>
-                <div className="m o">3 PM onward is clear. Created a Deep Work block 3:00{"\u2013"}5:30 PM. Do Not Disturb is on.</div>
-                <div className="m i">Perfect. Build me a landing page.</div>
+                <div className="m i">3 PM onward is clear. Created a Deep Work block 3:00{"\u2013"}5:30 PM. Do Not Disturb is on.</div>
+                <div className="m o">Perfect. Build me a landing page.</div>
                 <div className="mt">Read 9:15 AM</div>
-                <div className="m o">You{"'"}re looking at it.</div>
+                <div className="m i">You{"'"}re looking at it.</div>
               </div>
               <div className="msg-in"><div className="msg-field">Message</div><div className="msg-send">+</div></div>
               <div className="ios-home-i"><div className="ios-home-bar"/></div>
