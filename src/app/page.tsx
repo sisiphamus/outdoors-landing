@@ -94,6 +94,21 @@ nav {
   text-align: center;
   padding: calc(var(--nav-h) + 80px) 24px 48px;
   transition: background 0.5s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.5s var(--ease);
 }
 .hero h1 {
   font-family: var(--font-display);
@@ -239,7 +254,7 @@ button.btn-text { background: none; border: none; border-bottom: 1px solid trans
 .cta-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto 12px; }
 .cta-form input { flex: 1; padding: 14px 20px; border: 1px solid var(--border); border-radius: 99px; background: var(--bg-surface); color: var(--text-1); font-family: var(--font-body); font-size: 0.92rem; outline: none; transition: all 0.3s var(--ease); }
 .cta-form input::placeholder { color: var(--text-3); }
-.cta-form input:focus { border-color: var(--accent); }
+.cta-form input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
 .cta-note { font-size: 0.78rem; color: var(--text-3); transition: color 0.5s var(--ease); }
 .cta-btns { display: flex; gap: 12px; justify-content: center; }
 
@@ -287,7 +302,7 @@ footer { padding: 32px 24px; border-top: 1px solid var(--border); transition: bo
   transition: border-color 0.2s var(--ease);
 }
 .modal-form input::placeholder { color: var(--text-3); }
-.modal-form input:focus { border-color: var(--accent); }
+.modal-form input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
 .modal-form button {
   padding: 14px; border-radius: 12px; border: none;
   background: var(--cta-bg); color: var(--cta-fg);
