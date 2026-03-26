@@ -243,6 +243,62 @@ footer { padding: 32px 24px; border-top: 1px solid var(--border); transition: bo
 .fl a:hover { color: var(--text-1); }
 .fn { font-size: 0.75rem; color: var(--text-3); transition: color 0.5s var(--ease); }
 
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  animation: modal-bg 0.25s ease;
+}
+@keyframes modal-bg { from { opacity: 0; } to { opacity: 1; } }
+.modal {
+  background: var(--bg-surface); border-radius: 20px;
+  padding: 40px 36px; max-width: 420px; width: 100%;
+  text-align: center;
+  animation: modal-in 0.3s var(--ease);
+  border: 1px solid var(--border);
+}
+@keyframes modal-in { from { opacity: 0; transform: translateY(16px) scale(0.97); } to { opacity: 1; transform: none; } }
+.modal h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 400;
+  margin-bottom: 8px; color: var(--text-1);
+}
+.modal p {
+  font-size: 0.92rem; color: var(--text-2);
+  margin-bottom: 24px; line-height: 1.5;
+}
+.modal-form {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.modal-form input {
+  padding: 14px 18px; border: 1px solid var(--border);
+  border-radius: 12px; background: var(--bg-alt);
+  color: var(--text-1); font-family: var(--font-body);
+  font-size: 0.92rem; outline: none;
+  transition: border-color 0.2s var(--ease);
+}
+.modal-form input::placeholder { color: var(--text-3); }
+.modal-form input:focus { border-color: var(--accent); }
+.modal-form button {
+  padding: 14px; border-radius: 12px; border: none;
+  background: var(--cta-bg); color: var(--cta-fg);
+  font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.modal-form button:hover { opacity: 0.88; }
+.modal-close {
+  margin-top: 16px; background: none; border: none;
+  color: var(--text-3); font-size: 0.85rem; cursor: pointer;
+  font-family: var(--font-body);
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--text-1); }
+.modal-success {
+  color: var(--accent); font-weight: 600; font-size: 0.95rem;
+}
+
 .rv { opacity: 0; transform: translateY(14px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
 .rv.show { opacity: 1; transform: none; }
 .hero .rv { opacity: 1; transform: none; }
@@ -364,6 +420,16 @@ export default function Home() {
   const [mode, setMode] = useState<"personal" | "enterprise">("personal");
   const e = mode === "enterprise";
 
+  const [showModal, setShowModal] = useState(false);
+  const [modalDone, setModalDone] = useState(false);
+
+  const openDemo = (ev: React.MouseEvent) => { ev.preventDefault(); setShowModal(true); setModalDone(false); };
+  const submitDemo = (ev: React.FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    setModalDone(true);
+    setTimeout(() => { setShowModal(false); setModalDone(false); }, 2500);
+  };
+
   const roles = ["paralegal", "research assistant", "medical scribe", "office manager", "financial analyst"];
   const [roleIdx, setRoleIdx] = useState(0);
   useEffect(() => {
@@ -430,7 +496,7 @@ export default function Home() {
           <button className={!e ? "on" : ""} onClick={() => setMode("personal")}>Personal</button>
           <button className={e ? "on" : ""} onClick={() => setMode("enterprise")}>Enterprise</button>
         </div>
-        <a href={e ? "mailto:at253@rice.edu?subject=Everest%20Demo%20Request" : "#cta"} className="nav-btn">{e ? "Request Demo" : "Join Waitlist"}</a>
+        {e ? <button className="nav-btn" onClick={openDemo}>Request Demo</button> : <a href="#cta" className="nav-btn">Join Waitlist</a>}
       </nav>
 
       <section className="hero">
@@ -440,7 +506,7 @@ export default function Home() {
         </h1>
         <p className="hero-sub">{e ? "Deploy AI agents across your team that handle email, scheduling, and documents through your existing tools." : "A textable AI agent that sends emails, manages your calendar, and drafts polished work from a voice note."}</p>
         <div className="hero-ctas">
-          <a href={e ? "mailto:at253@rice.edu?subject=Everest%20Demo%20Request" : "#cta"} className="btn-primary">{e ? "Request a Demo" : "Join Waitlist"}</a>
+          {e ? <button className="btn-primary" onClick={openDemo}>Request a Demo</button> : <a href="#cta" className="btn-primary">Join Waitlist</a>}
           <a href={e ? "#pricing" : "#steps"} className="btn-text">{e ? "See pricing" : "How it works"}</a>
         </div>
         {e && (
@@ -577,7 +643,7 @@ export default function Home() {
             <div className="pc pop">
               <div className="pc-t">Team</div><div className="pc-a">$200</div><div className="pc-p">per seat / month</div>
               <ul className="pc-l"><li>Full agent per employee</li><li>Admin dashboard</li><li>All integrations</li><li>Dedicated onboarding</li><li>Priority support</li></ul>
-              <a href="mailto:at253@rice.edu?subject=Everest%20Demo%20Request" className="pc-b">Request Demo</a>
+              <button className="pc-b" onClick={openDemo}>Request Demo</button>
             </div>
             <div className="pc">
               <div className="pc-t">Custom</div><div className="pc-a">Custom</div><div className="pc-p">tailored to you</div>
@@ -597,7 +663,7 @@ export default function Home() {
         </>) : (<>
           <h2 className="rv">Give your team superpowers.</h2>
           <p className="rv">See how Everest saves your team 30+ hours a week.</p>
-          <div className="cta-btns rv"><a href="mailto:at253@rice.edu?subject=Everest%20Demo%20Request" className="btn-primary">Request a Demo</a><a href="mailto:at253@rice.edu?subject=Everest%20Demo%20Request" className="btn-text">Contact Sales</a></div>
+          <div className="cta-btns rv"><button className="btn-primary" onClick={openDemo}>Request a Demo</button><button className="btn-text" onClick={openDemo} style={{border:"none",background:"none",cursor:"pointer"}}>Contact Sales</button></div>
         </>)}
       </section>
 
@@ -606,6 +672,28 @@ export default function Home() {
         <ul className="fl"><li><a href="#steps">Product</a></li><li><a href="#pricing">Pricing</a></li><li><a href="mailto:at253@rice.edu?subject=Everest%20Demo%20Request">Contact</a></li></ul>
         <span className="fn">Built at Rice University</span>
       </div></footer>
+
+      {showModal && (
+        <div className="modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="modal" onClick={(ev) => ev.stopPropagation()}>
+            {!modalDone ? (<>
+              <h3>Request a demo</h3>
+              <p>Leave your email and we{"'"}ll reach out to schedule a walkthrough.</p>
+              <form className="modal-form" onSubmit={submitDemo}>
+                <input type="text" placeholder="Your name" required />
+                <input type="email" placeholder="Work email" required />
+                <input type="text" placeholder="Company name" />
+                <button type="submit">Submit</button>
+              </form>
+              <button className="modal-close" onClick={() => setShowModal(false)}>Maybe later</button>
+            </>) : (
+              <div style={{padding:"20px 0"}}>
+                <div className="modal-success">Thanks! We{"'"}ll be in touch shortly.</div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 }
