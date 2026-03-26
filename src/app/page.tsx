@@ -311,15 +311,20 @@ export default function Home() {
   }, [mode, e]);
 
   useEffect(() => {
+    const onScroll = () => document.getElementById("nav")?.classList.toggle("scrolled", window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Re-observe reveals on every mode change (new elements need observing)
+  useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => entries.forEach((x) => { if (x.isIntersecting) x.target.classList.add("show"); }),
       { threshold: 0, rootMargin: "0px 0px 120px 0px" }
     );
     document.querySelectorAll(".rv").forEach((el) => obs.observe(el));
-    const onScroll = () => document.getElementById("nav")?.classList.toggle("scrolled", window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => { obs.disconnect(); window.removeEventListener("scroll", onScroll); };
-  }, []);
+    return () => obs.disconnect();
+  }, [mode]);
 
   // Chat animation — re-runs when mode switches back to personal
   useEffect(() => {
