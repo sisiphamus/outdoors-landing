@@ -450,7 +450,7 @@ export default function Home() {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-mode", mode);
-    document.title = e ? "Everest \u2014 AI Workforce for Your Organization" : "Outdoors \u2014 AI That Actually Does the Work";
+    document.title = e ? "Everest \u2014 The Best Assistant Your Team Has Ever Had" : "Outdoors \u2014 Your To-Do List, Actually Done";
   }, [mode, e]);
 
   useEffect(() => {
@@ -499,8 +499,8 @@ export default function Home() {
   };
 
   const steps = e
-    ? [{ l:"Connect", d:"Link your team\u2019s email, calendar, and files." }, { l:"Assign", d:"Team members text tasks to their Everest agent." }, { l:"Execute", d:"Each agent drafts work using real files and context." }, { l:"Review", d:"Approve and send, or let routine tasks auto-complete." }]
-    : [{ l:"Speak", d:"Record a voice note from your phone." }, { l:"Context", d:"Outdoors pulls your emails, files, and calendar." }, { l:"Polish", d:"Turns a rough thought into professional work." }, { l:"Send", d:"Delivered from your real accounts. Done." }];
+    ? [{ l:"Connect", d:"Link your team\u2019s email, calendar, and file systems." }, { l:"Assign", d:"Team members text what they need done." }, { l:"It works", d:"Opens their apps, drafts the work, uses their real files." }, { l:"It\u2019s done", d:"Sent from their accounts. Not a draft. Actually done." }]
+    : [{ l:"Tell it", d:"Text or voice note what you need, from anywhere." }, { l:"It logs in", d:"Opens your laptop and signs into your real apps." }, { l:"It works", d:"Writes the email, checks your calendar, drafts the doc." }, { l:"It\u2019s done", d:"Sent from your accounts. Not a draft. Actually done." }];
 
   return (
     <>
@@ -518,9 +518,9 @@ export default function Home() {
       <section className="hero">
         <h1>{e
           ? <>Another <span className="rotate-wrap"><span className="rotate-word" key={roleIdx}>{roles[roleIdx]}</span></span> for a fraction of the cost.</>
-          : <>Productivity apps organize. <em>Outdoors does the work.</em></>}
+          : <>Your to-do list, <em>actually done.</em></>}
         </h1>
-        <p className="hero-sub">{e ? "Deploy AI agents across your team that handle email, scheduling, and documents through your existing tools." : "A textable AI agent that sends emails, manages your calendar, and drafts polished work from a voice note."}</p>
+        <p className="hero-sub">{e ? "Give every employee an assistant that uses their computer for them. Email, calendar, documents, all through the tools you already have." : "Text Outdoors what you need. It opens your laptop, logs into your apps, and does it. Email sent. Meeting booked. Document drafted. You never sat down."}</p>
         <div className="hero-ctas">
           {e ? <button className="btn-primary" onClick={openDemo}>Request a Demo</button> : <a href="#cta" className="btn-primary">Join Waitlist</a>}
           <a href={e ? "#pricing" : "#steps"} className="btn-text">{e ? "See pricing" : "How it works"}</a>
@@ -529,7 +529,7 @@ export default function Home() {
           <div className="ent-dash">
             <div className="ent-dash-hd">
               <div className="ent-dash-title">Team Activity</div>
-              <div className="ent-dash-badge">3 agents active</div>
+              <div className="ent-dash-badge">3 assistants active</div>
             </div>
             <div className="ent-rows">
               <div className="ent-row">
@@ -581,13 +581,13 @@ export default function Home() {
       <div className="proof">Built at Rice University</div>
 
       <section className="statement rv">
-        <h2>{e ? "Your team spends 34 hours a week on admin. Everest handles it." : "Not a chatbot. An agent that sends real emails, books real meetings, and files real documents."}</h2>
-        <p>{e ? "Medical trainees, paralegals, and researchers lose more time to paperwork than their actual work. Everest gives every team member an AI that acts through their real accounts." : "Other tools draft text for you to copy-paste. Outdoors connects to your Gmail, Calendar, and Drive and takes action."}</p>
+        <h2>{e ? "Your team spends 34 hours a week on admin. What if that just stopped?" : "It doesn\u2019t write you a draft and say good luck. It sends the email. From your Gmail. As you."}</h2>
+        <p>{e ? "Doctors, paralegals, and researchers lose more time to paperwork than their actual work. Everest uses their computer for them, through the apps they already have." : "Outdoors works the way you do. It opens Chrome, logs into Gmail, checks your calendar, writes the email, and hits send. You just told it what you needed."}</p>
       </section>
 
       <section className="steps" id="steps">
         <div className="steps-inner">
-          <div className="steps-hd rv"><div className="lbl">How it works</div><h2>{e ? "Deploy, assign, execute, review." : "Voice note in. Polished work out."}</h2></div>
+          <div className="steps-hd rv"><div className="lbl">How it works</div><h2>{e ? "Set up once. Your team has help forever." : "You talk. It does."}</h2></div>
           <div className="steps-row">
             {steps.map((s, i) => (
               <div key={s.l} className="si rv" style={{ transitionDelay: `${i * 60}ms` }}>
@@ -605,8 +605,8 @@ export default function Home() {
           <div className="feat rv">
             <div>
               <div className="feat-lbl">i.</div>
-              <h3>{e ? "One dashboard for your whole team" : "Email that writes itself"}</h3>
-              <p>{e ? "Deploy agents per seat, monitor usage, set permissions. Every employee gets a dedicated AI that knows their files and workflow." : "Describe what you need in a voice note. Outdoors reads your threads, writes a polished reply, and sends it from your Gmail."}</p>
+              <h3>{e ? "One dashboard for your whole team" : "Send emails without opening your laptop"}</h3>
+              <p>{e ? "Set up each team member in minutes. They text what they need, and their assistant handles it through their own accounts. You see everything from one place." : "Tell Outdoors who to email and what to say. It reads your past conversations, writes something that sounds like you, and sends it from your Gmail. You were walking to class."}</p>
             </div>
             <div className="feat-vis"><img src={e
               ? "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=450&fit=crop"
@@ -616,8 +616,8 @@ export default function Home() {
           <div className="feat flip rv">
             <div>
               <div className="feat-lbl">ii.</div>
-              <h3>{e ? "Works with your existing tools" : "Calendar that manages itself"}</h3>
-              <p>{e ? "Gmail, Outlook, Google Drive, Slack. No migration, no new tools. Everest plugs into what your team already uses." : "Schedules meetings, blocks focus time, resolves conflicts, sends confirmations. All from a text."}</p>
+              <h3>{e ? "Uses the tools you already have" : "Your schedule, handled while you work"}</h3>
+              <p>{e ? "Gmail, Outlook, Google Drive, Slack. No new software to learn. Everest uses the web the way your employees do, through their existing logins." : "It checks your calendar, books meetings, blocks focus time, and resolves conflicts. You just said what you needed between patients, between classes, between meetings."}</p>
             </div>
             <div className="feat-vis"><img src={e
               ? "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop"
@@ -637,7 +637,7 @@ export default function Home() {
       </section>
 
       <section className="pricing" id="pricing">
-        <div className="pricing-hd rv"><div className="lbl">Pricing</div><h2>{e ? "One agent per seat." : "Simple pricing."}</h2></div>
+        <div className="pricing-hd rv"><div className="lbl">Pricing</div><h2>{e ? "One assistant per person." : "Simple pricing."}</h2></div>
         {!e ? (
           <div className="pg">
             {[
@@ -658,7 +658,7 @@ export default function Home() {
           <div className="pg pg2">
             <div className="pc pop">
               <div className="pc-t">Team</div><div className="pc-a">$200</div><div className="pc-p">per seat / month</div>
-              <ul className="pc-l"><li>Full agent per employee</li><li>Admin dashboard</li><li>All integrations</li><li>Dedicated onboarding</li><li>Priority support</li></ul>
+              <ul className="pc-l"><li>One assistant per employee</li><li>Admin dashboard</li><li>Works with all your tools</li><li>Dedicated onboarding</li><li>Priority support</li></ul>
               <button className="pc-b" onClick={openDemo}>Request Demo</button>
             </div>
             <div className="pc">
