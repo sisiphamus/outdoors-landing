@@ -526,7 +526,10 @@ export default function Home() {
               <h3>{e ? "One dashboard for your whole team" : "Email that writes itself"}</h3>
               <p>{e ? "Deploy agents per seat, monitor usage, set permissions. Every employee gets a dedicated AI that knows their files and workflow." : "Describe what you need in a voice note. Outdoors reads your threads, writes a polished reply, and sends it from your Gmail."}</p>
             </div>
-            <div className="feat-vis"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=450&fit=crop" alt="" loading="lazy" /></div>
+            <div className="feat-vis"><img src={e
+              ? "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=450&fit=crop"
+              : "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=600&h=450&fit=crop"
+            } alt="" loading="lazy" /></div>
           </div>
           <div className="feat flip rv">
             <div>
@@ -534,7 +537,10 @@ export default function Home() {
               <h3>{e ? "Works with your existing tools" : "Calendar that manages itself"}</h3>
               <p>{e ? "Gmail, Outlook, Google Drive, Slack. No migration, no new tools. Everest plugs into what your team already uses." : "Schedules meetings, blocks focus time, resolves conflicts, sends confirmations. All from a text."}</p>
             </div>
-            <div className="feat-vis"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=450&fit=crop" alt="" loading="lazy" /></div>
+            <div className="feat-vis"><img src={e
+              ? "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop"
+              : "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=450&fit=crop"
+            } alt="" loading="lazy" /></div>
           </div>
         </div>
       </section>
