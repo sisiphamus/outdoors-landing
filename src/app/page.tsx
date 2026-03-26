@@ -430,15 +430,11 @@ export default function Home() {
     const name = fd.get("name") as string;
     const email = fd.get("email") as string;
     const company = fd.get("company") as string;
-    // Send notification email via mailto fallback + formsubmit.co
-    fetch("https://formsubmit.co/ajax/at253@rice.edu", {
+    // Send to our API route (Cloudflare Pages Function)
+    fetch("/api/lead", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify({
-        _subject: "Everest Demo Request: " + (company || name),
-        name, email, company,
-        message: name + " (" + email + ") from " + (company || "N/A") + " requested a demo."
-      })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, company, type: "demo" })
     }).catch(() => {});
     setModalDone(true);
     setTimeout(() => { setShowModal(false); setModalDone(false); }, 2500);
@@ -493,14 +489,10 @@ export default function Home() {
     ev.preventDefault();
     const inp = ev.currentTarget.querySelector("input") as HTMLInputElement;
     const email = inp.value;
-    fetch("https://formsubmit.co/ajax/at253@rice.edu", {
+    fetch("/api/lead", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify({
-        _subject: "Outdoors Waitlist: " + email,
-        email,
-        message: email + " joined the Outdoors waitlist."
-      })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, type: "waitlist" })
     }).catch(() => {});
     inp.value = ""; inp.placeholder = "Thanks! We\u2019ll be in touch.";
     setTimeout(() => { inp.placeholder = "Your email"; }, 3000);
