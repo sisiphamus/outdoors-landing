@@ -517,7 +517,7 @@ export default function Home() {
 
       <section className="hero">
         <h1>{e
-          ? <>Another <span className="rotate-wrap"><span className="rotate-word" key={roleIdx}>{roles[roleIdx]}</span></span>. A fraction of the cost.</>
+          ? <>Another <span className="rotate-wrap"><span className="rotate-word" key={roleIdx}>{roles[roleIdx]}</span></span> for a fraction of the cost.</>
           : <>Productivity apps organize. <em>Outdoors does the work.</em></>}
         </h1>
         <p className="hero-sub">{e ? "Deploy AI agents across your team that handle email, scheduling, and documents through your existing tools." : "A textable AI agent that sends emails, manages your calendar, and drafts polished work from a voice note."}</p>
