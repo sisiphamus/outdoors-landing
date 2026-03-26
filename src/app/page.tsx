@@ -17,26 +17,26 @@ const css = `
   --text-1: #f2ede4;
   --text-2: #b5ad9e;
   --text-3: #7a7468;
-  --accent: #5a7a5a;
-  --accent-dim: rgba(90,122,90,0.1);
+  --accent: #6b9e6b;
+  --accent-dim: rgba(107,158,107,0.12);
   --border: rgba(255,255,255,0.08);
   --nav-bg: rgba(43,42,36,0.92);
-  --cta-bg: #5a7a5a;
-  --cta-fg: #f2ede4;
+  --cta-bg: #6b9e6b;
+  --cta-fg: #1a1a16;
 }
 
 [data-mode="enterprise"] {
   --bg: #fafaf8;
-  --bg-alt: #f4f4f1;
-  --bg-surface: #eeeee9;
+  --bg-alt: #f3f3ef;
+  --bg-surface: #eaeae4;
   --text-1: #18181b;
-  --text-2: #52525b;
-  --text-3: #a1a1aa;
-  --accent: #1e3a5f;
-  --accent-dim: rgba(30,58,95,0.06);
-  --border: rgba(0,0,0,0.06);
-  --nav-bg: rgba(250,250,248,0.9);
-  --cta-bg: #1e3a5f;
+  --text-2: #4a4a52;
+  --text-3: #8a8a94;
+  --accent: #2a4d7a;
+  --accent-dim: rgba(42,77,122,0.07);
+  --border: rgba(0,0,0,0.07);
+  --nav-bg: rgba(250,250,248,0.92);
+  --cta-bg: #2a4d7a;
   --cta-fg: #ffffff;
 }
 
@@ -122,6 +122,7 @@ nav {
   border-bottom: 1px solid transparent; transition: all 0.2s var(--ease);
 }
 .btn-text:hover { color: var(--text-1); border-bottom-color: var(--text-3); }
+button.btn-text { background: none; border: none; border-bottom: 1px solid transparent; cursor: pointer; font-family: var(--font-body); }
 
 .phone-wrap { display: flex; justify-content: center; }
 .iphone { width: 280px; height: 606px; background: #1a1a1a; border-radius: 44px; padding: 10px; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.06) inset; }
@@ -159,12 +160,18 @@ nav {
 @keyframes bub { to { opacity:1; transform:translateY(0); } }
 
 .proof {
-  text-align: center; padding: 40px 24px 0;
-  color: var(--text-3); font-size: 0.82rem; letter-spacing: 0.04em;
+  text-align: center; padding: 48px 24px 0;
+  color: var(--text-3); font-size: 0.82rem; letter-spacing: 0.06em;
+  text-transform: uppercase; font-weight: 500;
   transition: color 0.5s var(--ease);
 }
+.proof-line {
+  width: 40px; height: 1px; background: var(--border);
+  margin: 0 auto 16px;
+  transition: background 0.5s var(--ease);
+}
 
-.statement { padding: 100px 24px; text-align: center; }
+.statement { padding: 80px 24px; text-align: center; border-top: 1px solid var(--border); transition: border-color 0.5s var(--ease); }
 .statement h2 {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 3.8vw, 2.6rem);
@@ -186,7 +193,7 @@ nav {
 .si { padding: 32px 28px; background: var(--bg-surface); transition: background 0.5s var(--ease); }
 .si:first-child { border-radius: 16px 0 0 16px; }
 .si:last-child { border-radius: 0 16px 16px 0; }
-.si-n { font-family: var(--font-display); font-size: 2rem; color: var(--accent); opacity: 0.5; line-height: 1; margin-bottom: 16px; }
+.si-n { font-family: var(--font-display); font-size: 2rem; color: var(--accent); opacity: 0.7; line-height: 1; margin-bottom: 16px; transition: color 0.5s var(--ease); }
 .si-t { font-weight: 700; font-size: 0.88rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-1); margin-bottom: 8px; transition: color 0.5s var(--ease); }
 .si-d { font-size: 0.88rem; line-height: 1.55; color: var(--text-2); transition: color 0.5s var(--ease); }
 
@@ -199,9 +206,9 @@ nav {
 .feat h3 { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 14px; line-height: 1.2; transition: color 0.5s var(--ease); }
 .feat p { font-size: 0.95rem; line-height: 1.65; color: var(--text-2); transition: color 0.5s var(--ease); }
 .feat-vis { aspect-ratio: 4/3; background: var(--bg-alt); border-radius: 16px; overflow: hidden; transition: background 0.5s var(--ease); }
-.feat-vis img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+.feat-vis img { width: 100%; height: 100%; object-fit: cover; }
 
-.trust { padding: 56px 24px; background: var(--bg-alt); transition: background 0.5s var(--ease); }
+.trust { padding: 64px 24px; background: var(--bg-alt); transition: background 0.5s var(--ease); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .trust-inner { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: center; gap: clamp(32px, 6vw, 80px); flex-wrap: wrap; }
 .ti { text-align: center; }
 .ti strong { display: block; font-size: 0.92rem; font-weight: 700; color: var(--text-1); margin-bottom: 4px; transition: color 0.5s var(--ease); }
@@ -226,7 +233,7 @@ nav {
 .pc.pop .pc-b { background: var(--cta-bg); color: var(--cta-fg); border-color: var(--cta-bg); }
 .pc.pop .pc-b:hover { opacity: 0.88; }
 
-.cta-final { padding: 100px 24px; text-align: center; }
+.cta-final { padding: 100px 24px; text-align: center; background: var(--bg-alt); transition: background 0.5s var(--ease); }
 .cta-final h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 16px; text-wrap: balance; }
 .cta-final p { color: var(--text-2); font-size: 1.05rem; margin-bottom: 32px; transition: color 0.5s var(--ease); }
 .cta-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto 12px; }
@@ -576,7 +583,7 @@ export default function Home() {
         )}
       </section>
 
-      <div className="proof">Built at Rice University</div>
+      <div className="proof"><div className="proof-line" />Built at Rice University</div>
 
       <section className="statement rv">
         <h2>{e ? "Your team spends 34 hours a week on admin. What if that just stopped?" : "It doesn\u2019t write you a draft and say good luck. It sends the email. From your Gmail. As you."}</h2>
@@ -639,7 +646,7 @@ export default function Home() {
         {!e ? (
           <div className="pg">
             {[
-              { t:"Free", a:"$0", p:"per month", pop:false, f:["Bring your own API key","Core agent","Email + calendar","Community support"], b:"Get Started" },
+              { t:"Free", a:"$0", p:"per month", pop:false, f:["Bring your own API key","Full assistant","Email + calendar","Community support"], b:"Get Started" },
               { t:"Pro", a:"$30", p:"per month", pop:true, f:["No API key needed","All features","Priority execution","Email support"], b:"Join Waitlist" },
               { t:"Premium", a:"$100", p:"per month", pop:false, f:["Unlimited usage","Custom integrations","Phone support","Early access"], b:"Join Waitlist" },
             ].map(c => (
@@ -681,7 +688,7 @@ export default function Home() {
         </>) : (<>
           <h2 className="rv">Give your team superpowers.</h2>
           <p className="rv">See how Everest saves your team 30+ hours a week.</p>
-          <div className="cta-btns rv"><button className="btn-primary" onClick={openDemo}>Request a Demo</button><button className="btn-text" onClick={openDemo} style={{border:"none",background:"none",cursor:"pointer"}}>Contact Sales</button></div>
+          <div className="cta-btns rv"><button className="btn-primary" onClick={openDemo}>Request a Demo</button><button className="btn-text" onClick={openDemo}>Contact Sales</button></div>
         </>)}
       </section>
 
