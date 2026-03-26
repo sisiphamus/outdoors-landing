@@ -186,7 +186,7 @@ nav {
 .si { padding: 32px 28px; background: var(--bg-surface); transition: background 0.5s var(--ease); }
 .si:first-child { border-radius: 16px 0 0 16px; }
 .si:last-child { border-radius: 0 16px 16px 0; }
-.si-n { font-family: var(--font-display); font-size: 2rem; color: var(--accent); opacity: 0.25; line-height: 1; margin-bottom: 16px; }
+.si-n { font-family: var(--font-display); font-size: 2rem; color: var(--accent); opacity: 0.5; line-height: 1; margin-bottom: 16px; }
 .si-t { font-weight: 700; font-size: 0.88rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-1); margin-bottom: 8px; transition: color 0.5s var(--ease); }
 .si-d { font-size: 0.88rem; line-height: 1.55; color: var(--text-2); transition: color 0.5s var(--ease); }
 
@@ -247,6 +247,65 @@ footer { padding: 32px 24px; border-top: 1px solid var(--border); transition: bo
 .rv.show { opacity: 1; transform: none; }
 .hero .rv { opacity: 1; transform: none; }
 
+/* Rotating word */
+.rotate-wrap { display: inline-block; position: relative; vertical-align: bottom; }
+.rotate-word {
+  display: inline-block;
+  animation: rotate-in 0.45s var(--ease) both;
+  color: var(--accent);
+  font-style: italic;
+}
+@keyframes rotate-in {
+  from { opacity: 0; transform: translateY(14px) rotateX(-40deg); filter: blur(3px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* Enterprise dashboard */
+.ent-dash {
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--bg-surface);
+  border-radius: 16px;
+  padding: 24px 28px;
+  animation: fade-up 0.8s var(--ease) 0.4s both;
+}
+.ent-dash-hd {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 20px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.ent-dash-title {
+  font-weight: 700; font-size: 0.88rem; color: var(--text-1);
+  transition: color 0.5s var(--ease);
+}
+.ent-dash-badge {
+  font-size: 0.72rem; font-weight: 600; padding: 3px 10px;
+  border-radius: 99px; background: var(--accent-dim); color: var(--accent);
+  transition: all 0.5s var(--ease);
+}
+.ent-rows { display: flex; flex-direction: column; gap: 10px; }
+.ent-row {
+  display: grid; grid-template-columns: 36px 1fr auto auto;
+  gap: 12px; align-items: center;
+  padding: 12px 14px; border-radius: 10px;
+  background: var(--bg-alt);
+  transition: background 0.5s var(--ease), transform 0.2s var(--ease);
+}
+.ent-row:hover { transform: translateX(2px); }
+.ent-av {
+  width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+  background: var(--bg-surface);
+}
+.ent-name { font-weight: 600; font-size: 0.85rem; color: var(--text-1); transition: color 0.5s var(--ease); }
+.ent-role { font-size: 0.74rem; color: var(--text-3); transition: color 0.5s var(--ease); }
+.ent-task { font-size: 0.8rem; color: var(--text-2); font-style: italic; transition: color 0.5s var(--ease); }
+.ent-st {
+  font-size: 0.72rem; font-weight: 600; padding: 3px 9px;
+  border-radius: 99px;
+}
+.st-done { background: rgba(76,175,80,0.1); color: #4caf50; }
+.st-work { background: rgba(255,183,77,0.1); color: #ffb74d; }
+
 /* Smooth entrance for phone */
 .phone-wrap { animation: phone-in 1s var(--ease) 0.3s both; }
 @keyframes phone-in { from { opacity: 0; transform: translateY(30px) scale(0.97); } to { opacity: 1; transform: none; } }
@@ -304,6 +363,14 @@ footer { padding: 32px 24px; border-top: 1px solid var(--border); transition: bo
 export default function Home() {
   const [mode, setMode] = useState<"personal" | "enterprise">("personal");
   const e = mode === "enterprise";
+
+  const roles = ["paralegal", "research assistant", "medical scribe", "office manager", "financial analyst"];
+  const [roleIdx, setRoleIdx] = useState(0);
+  useEffect(() => {
+    if (!e) return;
+    const iv = setInterval(() => setRoleIdx((i) => (i + 1) % roles.length), 2800);
+    return () => clearInterval(iv);
+  }, [e, roles.length]);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-mode", mode);
@@ -367,12 +434,43 @@ export default function Home() {
       </nav>
 
       <section className="hero">
-        <h1>{e ? <>Another <em>employee.</em> A fraction of the cost.</> : <>Productivity apps organize. <em>Outdoors does the work.</em></>}</h1>
+        <h1>{e
+          ? <>Another <span className="rotate-wrap"><span className="rotate-word" key={roleIdx}>{roles[roleIdx]}</span></span>. A fraction of the cost.</>
+          : <>Productivity apps organize. <em>Outdoors does the work.</em></>}
+        </h1>
         <p className="hero-sub">{e ? "Deploy AI agents across your team that handle email, scheduling, and documents through your existing tools." : "A textable AI agent that sends emails, manages your calendar, and drafts polished work from a voice note."}</p>
         <div className="hero-ctas">
           <a href="#cta" className="btn-primary">{e ? "Request a Demo" : "Join Waitlist"}</a>
           <a href="#steps" className="btn-text">{e ? "See pricing" : "How it works"}</a>
         </div>
+        {e && (
+          <div className="ent-dash">
+            <div className="ent-dash-hd">
+              <div className="ent-dash-title">Team Activity</div>
+              <div className="ent-dash-badge">3 agents active</div>
+            </div>
+            <div className="ent-rows">
+              <div className="ent-row">
+                <img className="ent-av" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=72&h=72&fit=crop&crop=face" alt="" />
+                <div><div className="ent-name">Dr. Sarah Kim</div><div className="ent-role">Dentist, Kim Family Dental</div></div>
+                <div className="ent-task">Patient follow-ups</div>
+                <div className="ent-st st-done">Sent</div>
+              </div>
+              <div className="ent-row">
+                <img className="ent-av" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=72&h=72&fit=crop&crop=face" alt="" />
+                <div><div className="ent-name">James Okafor</div><div className="ent-role">Paralegal, Reed & Associates</div></div>
+                <div className="ent-task">Case brief draft</div>
+                <div className="ent-st st-work">Working</div>
+              </div>
+              <div className="ent-row">
+                <img className="ent-av" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=72&h=72&fit=crop&crop=face" alt="" />
+                <div><div className="ent-name">Maria Reyes</div><div className="ent-role">Analyst, Vanguard Capital</div></div>
+                <div className="ent-task">Quarterly report</div>
+                <div className="ent-st st-done">Sent</div>
+              </div>
+            </div>
+          </div>
+        )}
         {!e && (
           <div className="phone-wrap">
             <div className="iphone"><div className="iphone-screen">
