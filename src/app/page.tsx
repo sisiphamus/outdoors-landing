@@ -77,23 +77,40 @@ nav.scrolled::after { opacity: 0.3; }
 .hero-subtitle { font-size: 1.12rem; line-height: 1.7; margin-bottom: 40px; max-width: 460px; }
 .hero-actions { display: flex; align-items: center; gap: 8px; }
 .hero-visual { display: flex; justify-content: center; align-items: center; }
-.phone-mockup { width: 300px; background: #000; border-radius: 36px; padding: 12px; box-shadow: 0 40px 80px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05); position: relative; transition: box-shadow var(--transition-fast); }
-.phone-mockup:hover { box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(200,164,94,0.08); }
-[data-mode="enterprise"] .phone-mockup { box-shadow: 0 40px 80px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06); }
-.phone-screen { background: #0B141B; border-radius: 26px; overflow: hidden; min-height: 520px; }
-.phone-header { background: #1F2C33; padding: 12px 16px; display: flex; align-items: center; gap: 12px; }
-.phone-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 0.85rem; color: #000; font-weight: 700; }
-.phone-header-text { font-size: 0.9rem; color: #E9EDEF; font-weight: 500; }
-.phone-header-sub { font-size: 0.7rem; color: #8696A0; }
-.chat-messages { padding: 16px 12px; display: flex; flex-direction: column; gap: 8px; }
-.chat-bubble { max-width: 82%; padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; line-height: 1.5; opacity: 0; transform: translateY(10px); }
-.chat-bubble.visible { opacity: 1; transform: translateY(0); transition: all 400ms ease; }
-.chat-user { align-self: flex-end; background: #005C4B; color: #E9EDEF; border-bottom-right-radius: 2px; }
-.chat-agent { align-self: flex-start; background: #1F2C33; color: #E9EDEF; border-bottom-left-radius: 2px; }
-.chat-voice { display: flex; align-items: center; gap: 8px; }
-.voice-waves { display: flex; gap: 2px; align-items: center; }
-.voice-wave { width: 3px; border-radius: 2px; background: #8696A0; }
-.chat-time { font-size: 0.65rem; color: rgba(233,237,239,0.5); text-align: right; margin-top: 2px; }
+.iphone { width: 290px; height: 628px; background: #1a1a1a; border-radius: 46px; padding: 10px; position: relative; box-shadow: 0 50px 100px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08) inset, inset 0 0 2px rgba(255,255,255,.05); }
+.iphone::before { content: ''; position: absolute; right: -2px; top: 140px; width: 3px; height: 56px; background: #2a2a2a; border-radius: 0 2px 2px 0; }
+.iphone::after { content: ''; position: absolute; left: -2px; top: 120px; width: 3px; height: 32px; background: #2a2a2a; border-radius: 2px 0 0 2px; }
+.iphone-screen { width: 100%; height: 100%; background: #F2F2F7; border-radius: 38px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
+.dynamic-island { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 20; width: 92px; height: 28px; background: #000; border-radius: 20px; }
+.ios-status { display: flex; justify-content: space-between; align-items: center; padding: 14px 22px 0; font-size: 11px; font-weight: 600; color: #000; min-height: 48px; position: relative; z-index: 10; background: #F2F2F7; flex-shrink: 0; }
+.ios-status-time { font-size: 12px; font-weight: 700; letter-spacing: -.01em; }
+.ios-icons { display: flex; gap: 4px; align-items: center; }
+.ios-signal { display: flex; gap: 1.5px; align-items: flex-end; }
+.ios-signal span { display: block; width: 3px; border-radius: .5px; background: #000; }
+.ios-signal span:nth-child(1) { height: 3px; } .ios-signal span:nth-child(2) { height: 5px; } .ios-signal span:nth-child(3) { height: 7px; } .ios-signal span:nth-child(4) { height: 9px; }
+.ios-batt { display: flex; align-items: center; gap: 1px; }
+.ios-batt-body { width: 20px; height: 9px; border: 1.2px solid rgba(0,0,0,.35); border-radius: 2.5px; position: relative; overflow: hidden; }
+.ios-batt-fill { position: absolute; left: 1px; top: 1px; bottom: 1px; width: 65%; background: #000; border-radius: 1px; }
+.ios-batt-tip { width: 1.5px; height: 4px; background: rgba(0,0,0,.35); border-radius: 0 1px 1px 0; }
+.wa-header { display: flex; align-items: center; gap: 8px; padding: 2px 12px 8px; background: #F2F2F7; border-bottom: 0.5px solid rgba(0,0,0,.12); flex-direction: column; flex-shrink: 0; position: relative; }
+.wa-back-btn { color: #007AFF; font-size: 13px; font-weight: 400; display: flex; align-items: center; gap: 2px; position: absolute; left: 22px; }
+.wa-back-chevron { font-size: 18px; line-height: 1; }
+.wa-prof { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #5AC8FA, #007AFF); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: #fff; flex-shrink: 0; }
+.wa-hd-name { font-size: 11px; font-weight: 600; color: #000; letter-spacing: -.01em; text-align: center; }
+.wa-messages { flex: 1; padding: 6px 12px 8px; display: flex; flex-direction: column; gap: 3px; overflow-y: auto; overflow-x: hidden; background: #fff; scrollbar-width: none; }
+.wa-messages::-webkit-scrollbar { display: none; }
+.wb { max-width: 78%; padding: 7px 12px; border-radius: 18px; font-size: 13px; line-height: 1.35; letter-spacing: -.01em; position: relative; word-wrap: break-word; margin-bottom: 1px; flex-shrink: 0; opacity: 0; transform: translateY(10px); }
+.wb.out { align-self: flex-end; background: #007AFF; color: #fff; border-radius: 18px 18px 4px 18px; }
+.wb.inn { align-self: flex-start; background: #E9E9EB; color: #000; border-radius: 18px 18px 18px 4px; }
+.wb.vis { animation: bub .35s ease forwards; }
+.wb-ts { text-align: center; font-size: 9px; color: #8E8E93; padding: 4px 0; letter-spacing: .01em; flex-shrink: 0; }
+.wb-delivered { text-align: right; font-size: 9px; color: #8E8E93; padding: 2px 4px 4px; letter-spacing: .01em; flex-shrink: 0; }
+.wa-input { display: flex; align-items: center; gap: 6px; padding: 6px 10px 20px; background: #F2F2F7; border-top: 0.5px solid rgba(0,0,0,.1); flex-shrink: 0; }
+.wa-input-field { flex: 1; background: #fff; border-radius: 18px; padding: 7px 14px; font-size: 13px; color: #C7C7CC; border: 0.5px solid rgba(0,0,0,.12); }
+.wa-input-plus { width: 26px; height: 26px; border-radius: 50%; background: #007AFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 300; color: #fff; flex-shrink: 0; }
+.ios-home { display: flex; justify-content: center; padding: 4px 0 2px; background: #F2F2F7; flex-shrink: 0; }
+.ios-home-bar { width: 120px; height: 4px; background: rgba(0,0,0,.15); border-radius: 2px; }
+@keyframes bub { to { opacity: 1; transform: translateY(0); } }
 .enterprise-visual { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.06); transition: all var(--transition-mode); }
 .enterprise-visual:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.1); border-color: var(--border-hover); }
 .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
@@ -171,7 +188,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); transition: borde
   .hero-subtitle { max-width: 100%; margin-left: auto; margin-right: auto; }
   .hero-actions { justify-content: center; }
   .hero-visual { order: -1; }
-  .phone-mockup { width: 260px; }
+  .iphone { width: 250px; height: 540px; }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
   .features-grid { grid-template-columns: 1fr; }
   .feature-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
@@ -224,19 +241,25 @@ export default function Home() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    // Chat animation
-    const chatObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          document.querySelectorAll(".chat-bubble").forEach((bubble, i) => {
-            setTimeout(() => bubble.classList.add("visible"), 600 + i * 700);
-          });
-          chatObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.3 });
-    const hero = document.querySelector(".hero");
-    if (hero) chatObserver.observe(hero);
+    // iOS chat bubble animation
+    const waChat = document.getElementById("waChat");
+    if (waChat) {
+      const chatObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const bubbles = waChat.querySelectorAll(".wb");
+            bubbles.forEach((b, i) => {
+              setTimeout(() => {
+                b.classList.add("vis");
+                waChat.scrollTop = waChat.scrollHeight;
+              }, i * 500);
+            });
+            chatObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.2 });
+      chatObserver.observe(waChat);
+    }
 
     return () => {
       observer.disconnect();
@@ -295,45 +318,41 @@ export default function Home() {
             </div>
             <div className="hero-visual reveal reveal-delay-2">
               {!isEnterprise && (
-                <div className="phone-mockup">
-                  <div className="phone-screen">
-                    <div className="phone-header">
-                      <div className="phone-avatar">O</div>
-                      <div>
-                        <div className="phone-header-text">Outdoors</div>
-                        <div className="phone-header-sub">online</div>
-                      </div>
-                    </div>
-                    <div className="chat-messages">
-                      <div className="chat-bubble chat-user">
-                        <div className="chat-voice">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8696A0" strokeWidth="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
-                          <div className="voice-waves">
-                            {[8,14,6,18,10,15,7,12,5].map((h,i) => (
-                              <div key={i} className="voice-wave" style={{height: h}} />
-                            ))}
-                          </div>
-                          <span style={{fontSize:"0.72rem",color:"#8696A0"}}>0:12</span>
+                <div className="iphone">
+                  <div className="iphone-screen">
+                    <div className="dynamic-island" />
+                    <div className="ios-status">
+                      <div className="ios-status-time">9:15</div>
+                      <div className="ios-icons">
+                        <div className="ios-signal"><span/><span/><span/><span/></div>
+                        <div className="ios-batt">
+                          <div className="ios-batt-body"><div className="ios-batt-fill"/></div>
+                          <div className="ios-batt-tip"/>
                         </div>
-                        <div className="chat-time">9:41 AM</div>
-                      </div>
-                      <div className="chat-bubble chat-agent">
-                        Email sent to Dr. Chen referencing her CRISPR gene therapy paper. Mentioned your interest in summer research positions. Follow-up reminder set for Thursday.
-                        <div className="chat-time">9:42 AM</div>
-                      </div>
-                      <div className="chat-bubble chat-user">
-                        What do I have tomorrow?
-                        <div className="chat-time">9:42 AM</div>
-                      </div>
-                      <div className="chat-bubble chat-agent">
-                        Tomorrow you have:<br/>
-                        9:00 AM - Organic Chemistry<br/>
-                        1:00 PM - Clinical shadowing<br/>
-                        7:00 PM - Study group<br/><br/>
-                        I blocked 5:00-6:30 PM for MCAT prep.
-                        <div className="chat-time">9:42 AM</div>
                       </div>
                     </div>
+                    <div className="wa-header">
+                      <div className="wa-back-btn"><span className="wa-back-chevron">&lsaquo;</span></div>
+                      <div className="wa-prof">O</div>
+                      <div className="wa-hd-name">Outdoors</div>
+                    </div>
+                    <div className="wa-messages" id="waChat">
+                      <div className="wb-ts">Today 9:14 AM</div>
+                      <div className="wb inn">Send an email to the team letting them know I{"'"}ll be 15 minutes late to standup. Something casual.</div>
+                      <div className="wb-delivered">Delivered</div>
+                      <div className="wb out">Done. Sent to the engineering channel: {"\""} Hey all, running about 15 min behind this morning. Start without me and I{"'"}ll jump in.{"\""} Sent from your Gmail at 9:14 AM.</div>
+                      <div className="wb inn">Also check if I have anything after 3pm today. If it{"'"}s clear, block it off for deep work.</div>
+                      <div className="wb-ts">Read 9:14 AM</div>
+                      <div className="wb out">Your 3 PM onward is clear. I{"'"}ve created a {"\""} Deep Work{"\""} block from 3:00 to 5:30 PM with status set to Do Not Disturb. No one can book over it.</div>
+                      <div className="wb inn">Perfect. One more thing, build me a landing page for Outdoors.</div>
+                      <div className="wb-ts">Read 9:15 AM</div>
+                      <div className="wb out">You{"'"}re looking at it.</div>
+                    </div>
+                    <div className="wa-input">
+                      <div className="wa-input-field">+</div>
+                      <div className="wa-input-plus">+</div>
+                    </div>
+                    <div className="ios-home"><div className="ios-home-bar"/></div>
                   </div>
                 </div>
               )}
