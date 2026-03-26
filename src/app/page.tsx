@@ -417,7 +417,7 @@ footer { padding: 32px 24px; border-top: 1px solid var(--border); transition: bo
 `;
 
 export default function Home() {
-  const [mode, setMode] = useState<"personal" | "enterprise">("personal");
+  const [mode, setMode] = useState<"personal" | "enterprise">("enterprise");
   const e = mode === "enterprise";
 
   const [showModal, setShowModal] = useState(false);
@@ -635,7 +635,7 @@ export default function Home() {
       </section>
 
       <section className="pricing" id="pricing">
-        <div className="pricing-hd rv"><div className="lbl">Pricing</div><h2>{e ? "One assistant per person." : "Simple pricing."}</h2></div>
+        <div className="pricing-hd rv"><div className="lbl">Pricing</div><h2>{e ? "Tailored to your team." : "Simple pricing."}</h2></div>
         {!e ? (
           <div className="pg">
             {[
@@ -653,16 +653,20 @@ export default function Home() {
             ))}
           </div>
         ) : (
-          <div className="pg pg2">
-            <div className="pc pop">
-              <div className="pc-t">Team</div><div className="pc-a">$200</div><div className="pc-p">per seat / month</div>
-              <ul className="pc-l"><li>One assistant per employee</li><li>Admin dashboard</li><li>Works with all your tools</li><li>Dedicated onboarding</li><li>Priority support</li></ul>
-              <button className="pc-b" onClick={openDemo}>Request Demo</button>
-            </div>
-            <div className="pc">
-              <div className="pc-t">Custom</div><div className="pc-a">Custom</div><div className="pc-p">tailored to you</div>
-              <ul className="pc-l"><li>Everything in Team</li><li>Custom workflows</li><li>SLA guarantee</li><li>Dedicated manager</li><li>On-premise option</li></ul>
-              <a href="#cta" className="pc-b">Contact Sales</a>
+          <div style={{maxWidth:480,margin:"0 auto",textAlign:"center"}}>
+            <div className="pc pop" style={{borderRadius:16}}>
+              <div className="pc-t">Enterprise</div>
+              <div className="pc-a" style={{fontSize:"2rem"}}>Custom</div>
+              <div className="pc-p">priced per team, based on your needs</div>
+              <ul className="pc-l">
+                <li>One assistant per employee</li>
+                <li>Admin dashboard and analytics</li>
+                <li>Works with all your existing tools</li>
+                <li>Custom workflows and integrations</li>
+                <li>Dedicated onboarding and support</li>
+                <li>SLA guarantee</li>
+              </ul>
+              <button className="pc-b" onClick={openDemo}>Request a Demo</button>
             </div>
           </div>
         )}
