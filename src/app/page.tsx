@@ -42,6 +42,16 @@ const css = `
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 10%, var(--accent) 50%, transparent 90%);
+  z-index: 200;
+  opacity: 0.7;
+  transition: background 0.5s var(--ease);
+}
 body {
   font-family: var(--font-body);
   background: var(--bg);
@@ -131,7 +141,7 @@ nav {
   background: var(--cta-bg); color: var(--cta-fg);
   cursor: pointer; text-decoration: none; transition: all 0.2s var(--ease);
 }
-.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 4px 16px var(--accent-dim); }
 .btn-text {
   font-size: 0.92rem; color: var(--text-2); text-decoration: none;
   border-bottom: 1px solid transparent; transition: all 0.2s var(--ease);
@@ -186,17 +196,31 @@ button.btn-text { background: none; border: none; border-bottom: 1px solid trans
   transition: background 0.5s var(--ease);
 }
 
-.statement { padding: 80px 24px; text-align: center; border-top: 1px solid var(--border); transition: border-color 0.5s var(--ease); }
+.statement {
+  padding: 100px 24px;
+  text-align: center;
+  background: var(--bg-alt);
+  position: relative;
+  transition: background 0.5s var(--ease);
+}
+.statement::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--accent));
+  transition: background 0.5s var(--ease);
+}
 .statement h2 {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3.8vw, 2.6rem);
-  font-weight: 400; line-height: 1.2; letter-spacing: -0.02em;
-  max-width: 640px; margin: 0 auto; text-wrap: balance;
+  font-size: clamp(1.8rem, 4.2vw, 2.8rem);
+  font-weight: 400; line-height: 1.18; letter-spacing: -0.02em;
+  max-width: 680px; margin: 0 auto; text-wrap: balance;
   transition: color 0.5s var(--ease);
 }
 .statement p {
   font-size: 1.05rem; color: var(--text-2); max-width: 520px;
-  margin: 20px auto 0; line-height: 1.65; transition: color 0.5s var(--ease);
+  margin: 24px auto 0; line-height: 1.65; transition: color 0.5s var(--ease);
 }
 
 .steps { padding: 80px 24px; background: var(--bg-alt); transition: background 0.5s var(--ease); }
@@ -248,8 +272,26 @@ button.btn-text { background: none; border: none; border-bottom: 1px solid trans
 .pc.pop .pc-b { background: var(--cta-bg); color: var(--cta-fg); border-color: var(--cta-bg); }
 .pc.pop .pc-b:hover { opacity: 0.88; }
 
-.cta-final { padding: 100px 24px; text-align: center; background: var(--bg-alt); transition: background 0.5s var(--ease); }
-.cta-final h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 16px; text-wrap: balance; }
+.cta-final {
+  padding: 120px 24px;
+  text-align: center;
+  position: relative;
+  transition: background 0.5s var(--ease);
+}
+.cta-final::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 64px;
+  background: linear-gradient(to bottom, transparent, var(--accent));
+  transition: background 0.5s var(--ease);
+}
+.cta-final h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 400; letter-spacing: -0.02em;
+  margin-bottom: 16px; text-wrap: balance;
+}
 .cta-final p { color: var(--text-2); font-size: 1.05rem; margin-bottom: 32px; transition: color 0.5s var(--ease); }
 .cta-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto 12px; }
 .cta-form input { flex: 1; padding: 14px 20px; border: 1px solid var(--border); border-radius: 99px; background: var(--bg-surface); color: var(--text-1); font-family: var(--font-body); font-size: 0.92rem; outline: none; transition: all 0.3s var(--ease); }
@@ -258,7 +300,7 @@ button.btn-text { background: none; border: none; border-bottom: 1px solid trans
 .cta-note { font-size: 0.78rem; color: var(--text-3); transition: color 0.5s var(--ease); }
 .cta-btns { display: flex; gap: 12px; justify-content: center; }
 
-footer { padding: 32px 24px; border-top: 1px solid var(--border); transition: border-color 0.5s var(--ease); }
+footer { padding: 48px 24px 32px; border-top: 1px solid var(--border); transition: border-color 0.5s var(--ease); }
 .fi { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .fl { display: flex; gap: 28px; list-style: none; }
 .fl a { font-size: 0.82rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
@@ -346,6 +388,8 @@ footer { padding: 32px 24px; border-top: 1px solid var(--border); transition: bo
   border-radius: 16px;
   padding: 24px 28px;
   animation: fade-up 0.8s var(--ease) 0.4s both;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  border: 1px solid var(--border);
 }
 .ent-dash-hd {
   display: flex; justify-content: space-between; align-items: center;
