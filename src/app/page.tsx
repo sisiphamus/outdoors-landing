@@ -159,7 +159,7 @@ export default function Home(){
   ];
 
   return(<><style dangerouslySetInnerHTML={{__html:css}}/>
-  <nav id="nav"><a href="#" className="logo">outdoors</a><button className="btn-primary" style={{padding:"9px 22px",fontSize:".84rem"}} onClick={()=>setShowWaitlist(true)}>Download</button></nav>
+  <nav id="nav"><a href="#" className="logo">outdoors</a><button className="btn-primary" style={{padding:"9px 22px",fontSize:".84rem"}} onClick={()=>setShowWaitlist(true)}>Join Waitlist</button></nav>
   <div className="counter-bar">Free for .edu {taskCount>0&&<><span className={`counter-num${bump?" counter-bump":""}`}> — {taskCount.toLocaleString()}</span> tasks completed and counting</>}</div>
   <section className="hero">
     <h1>Rich people hire assistants. <em>Now you can too.</em></h1>
