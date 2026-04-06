@@ -279,7 +279,7 @@ export default function Home(){
       {waitlistDone?<div className="wl-success">You{"'"}re on the list. We{"'"}ll reach out soon.</div>:<>
         <h3>Get Early Access</h3>
         <p>Enter your name and email. We{"'"}ll get you set up.</p>
-        <form className="wl-form" onSubmit={async e=>{e.preventDefault();const fd=new FormData(e.currentTarget);const name=fd.get("name")as string;const email=fd.get("email")as string;if(!name||!email)return;try{await fetch(SU,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:`name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`});setWaitlistDone(true)}catch{setWaitlistDone(true)}}}>
+        <form className="wl-form" onSubmit={async e=>{e.preventDefault();const fd=new FormData(e.currentTarget);const name=fd.get("name")as string;const email=fd.get("email")as string;if(!name||!email)return;try{await fetch(SU,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,email:email.toLowerCase()})});setWaitlistDone(true)}catch{setWaitlistDone(true)}}}>
           <input name="name" placeholder="Your name" required/>
           <input name="email" type="email" placeholder="Email" required/>
           <button type="submit">Join Waitlist</button>
